@@ -53,4 +53,42 @@ class ProductModel {
     Color(0xFFFFCA28),
     Color(0xFF9CCC65),
   ];
+
+  //---------------------DRINKS DATA----------------------------------------------//
+
+  List<String> drinkImages = [
+    'assets/coca-cola.png',
+    'assets/hollandia.png',
+    'assets/red-bull.png',
+    'assets/malt.png',
+    'assets/ceres.png',
+    
+  ];
+
+  List<String> drinkName = [
+    'Coca Cola',
+    'Hollandia Yogurt',
+    'Red Bull Energy Drink',
+    'Malta Guinness',
+    'Ceres Fruit Drink',
+    
+  ];
+
+  List<String> drinkPrices = [
+    'GHS 10.00',
+    'GHS 20.00',
+    'GHS 5.00',
+    'GHS 4.00',
+    'GHS 12.0',
+   
+  ];
+
+  List drinkColor = [
+    Color(0xFF303030),
+    Color(0xFFEC407A),
+    Color(0xFF1976D2),
+    Color(0xFFFFC107),
+    Color(0xFFB2FF59),
+    
+  ];
 }
