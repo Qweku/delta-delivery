@@ -37,6 +37,9 @@ dependencies:
   stacked_themes:
   datetime_picker_formfield:
   fluid_bottom_nav_bar: ^1.3.0
+  google_maps_flutter:
+  location:
+  flutter_polyline_points:
 
 dev_dependencies:
   flutter_test:

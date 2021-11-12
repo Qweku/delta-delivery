@@ -87,7 +87,9 @@ class _HomeScreenState extends State<HomeScreen> {
         
           Container(
             alignment:Alignment(0,-0.25),
-            child: CategoryMenu())
+            child: CategoryMenu(
+              getCategory: (_catNum){},
+            ))
         ],
       ),
     );

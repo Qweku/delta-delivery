@@ -4,7 +4,8 @@ import 'package:delta/screens/productScreen.dart';
 import 'package:flutter/material.dart';
 
 class CategoryMenu extends StatefulWidget {
-  const CategoryMenu({Key? key}) : super(key: key);
+  final Function(int _category)? getCategory;
+  const CategoryMenu({Key? key, this.getCategory}) : super(key: key);
 
   @override
   State<CategoryMenu> createState() => _CategoryMenuState();
@@ -12,9 +13,6 @@ class CategoryMenu extends StatefulWidget {
 
 class _CategoryMenuState extends State<CategoryMenu> {
   int currentIndex = 0;
-  Color iconColor = Colors.black;
-  Color textColor = Colors.black;
-  Color bkgColor = Colors.white;
   List<String> name = [
     'Canned Goods',
     'Drinks & Snacks',
@@ -34,7 +32,7 @@ class _CategoryMenuState extends State<CategoryMenu> {
 
   @override
   Widget build(BuildContext context) {
-   // final theme = Theme.of(context);
+    // final theme = Theme.of(context);
     double height = MediaQuery.of(context).size.height;
     //double width = MediaQuery.of(context).size.width;
 
@@ -47,7 +45,7 @@ class _CategoryMenuState extends State<CategoryMenu> {
               children: List.generate(
                   name.length, (index) => buildContainer(index: index))),
         ));
-      }
+  }
 
   AnimatedContainer buildContainer({required int index}) {
     final theme = Theme.of(context);
@@ -62,6 +60,7 @@ class _CategoryMenuState extends State<CategoryMenu> {
             onTap: () {
               setState(() {
                 currentIndex = index;
+                widget.getCategory!(index);
               });
             },
             child: Container(
@@ -70,12 +69,12 @@ class _CategoryMenuState extends State<CategoryMenu> {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   color:
-                      currentIndex == index ?  theme.primaryColor: Colors.white,
+                      currentIndex == index ? theme.primaryColor : Colors.white,
                   boxShadow: [
                     BoxShadow(
                       color: Colors.grey,
-                      offset: Offset(1, 2),
-                      blurRadius: 5,
+                      offset: Offset(1, 3),
+                      blurRadius: 2,
                     )
                   ]),
               child: Column(
