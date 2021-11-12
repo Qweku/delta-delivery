@@ -14,6 +14,101 @@ class ProductModel {
       this.prodPrice = '',
       this.prodColor = Colors.transparent});
 
+  factory ProductModel.fromMap(Map<String, dynamic> map) {
+    return ProductModel(
+      prodName: map['name'],
+      prodImage: map['image'],
+      prodPrice: map['price'],
+      prodColor: map['color'],
+    );
+  }
+
+  List<ProductModel> productModelList(List<Map<String, dynamic>> str) =>
+      List<ProductModel>.from(str.map((x) => ProductModel.fromMap(x)));
+
+  List<Map<String, dynamic>> canned = [
+    {
+      "name": 'Nestle Milo',
+      "image": 'assets/milo.png',
+      "price": 'GHS 17.00',
+      "color": Color(0xFF66BB6A),
+    },
+    {
+      "name": 'Nestle Milo',
+      "image": 'assets/milo.png',
+      "price": 'GHS 17.00',
+      "color": Color(0xFF66BB6A),
+    },
+    {
+      "name": 'Nestle Milo',
+      "image": 'assets/milo.png',
+      "price": 'GHS 17.00',
+      "color": Color(0xFF66BB6A),
+    },
+    {
+      "name": 'Nestle Milo',
+      "image": 'assets/milo.png',
+      "price": 'GHS 17.00',
+      "color": Color(0xFF66BB6A),
+    },
+    {
+      "name": 'Nestle Milo',
+      "image": 'assets/milo.png',
+      "price": 'GHS 17.00',
+      "color": Color(0xFF66BB6A),
+    },
+    {
+      "name": 'Nestle Milo',
+      "image": 'assets/milo.png',
+      "price": 'GHS 17.00',
+      "color": Color(0xFF66BB6A),
+    }
+  ];
+  List<Map<String, dynamic>> drinks = [
+    {
+      "name": 'Coca Cola',
+      "image": 'assets/coca-cola.png',
+      "price": 'GHS 10.00',
+      "color": Color(0xFF303030),
+    },
+    {
+      "name": 'Coca Cola',
+      "image": 'assets/coca-cola.png',
+      "price": 'GHS 10.00',
+      "color": Color(0xFF303030),
+    },
+    {
+      "name": 'Coca Cola',
+      "image": 'assets/coca-cola.png',
+      "price": 'GHS 10.00',
+      "color": Color(0xFF303030),
+    },
+    {
+      "name": 'Coca Cola',
+      "image": 'assets/coca-cola.png',
+      "price": 'GHS 10.00',
+      "color": Color(0xFF303030),
+    },
+    {
+      "name": 'Coca Cola',
+      "image": 'assets/coca-cola.png',
+      "price": 'GHS 10.00',
+      "color": Color(0xFF303030),
+    },
+    {
+      "name": 'Coca Cola',
+      "image": 'assets/coca-cola.png',
+      "price": 'GHS 10.00',
+      "color": Color(0xFF303030),
+    },
+    {
+      "name": 'Coca Cola',
+      "image": 'assets/coca-cola.png',
+      "price": 'GHS 10.00',
+      "color": Color(0xFF303030),
+    }
+  ];
+
   List<String> productImages = [
     'assets/milo.png',
     'assets/gino.png',
@@ -62,7 +157,6 @@ class ProductModel {
     'assets/red-bull.png',
     'assets/malt.png',
     'assets/ceres.png',
-    
   ];
 
   List<String> drinkName = [
@@ -71,7 +165,6 @@ class ProductModel {
     'Red Bull Energy Drink',
     'Malta Guinness',
     'Ceres Fruit Drink',
-    
   ];
 
   List<String> drinkPrices = [
@@ -80,7 +173,6 @@ class ProductModel {
     'GHS 5.00',
     'GHS 4.00',
     'GHS 12.0',
-   
   ];
 
   List drinkColor = [
@@ -89,6 +181,5 @@ class ProductModel {
     Color(0xFF1976D2),
     Color(0xFFFFC107),
     Color(0xFFB2FF59),
-    
   ];
 }
