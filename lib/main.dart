@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:delta/auth/authenticate.dart';
+import 'package:delta/model/products.dart';
 import 'package:delta/wrapper.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -36,9 +37,11 @@ class MyApp extends StatelessWidget {
                 value: AuthService().user,
                 initialData: null,
               ),
-              StreamProvider<List<CartModel>>.value(
-        initialData: [],
-        value: DbServices().carts,)
+              ChangeNotifierProvider<Carts>.value(value: Carts()),
+              Provider<ProductModel>.value(value: ProductModel()),
+        //       StreamProvider<List<CartModel>>.value(
+        // initialData: [],
+        // value: DbServices().carts,)
             ],
       child: ThemeBuilder(
                   themes: getThemes(),

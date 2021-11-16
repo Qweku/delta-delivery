@@ -40,7 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() {
       switch (index) {
         case 0:
-           _content = CartScreen(products: ProductModel(),);
+           _content = CartScreen();
           break;
         case 1:
            _content = MyHome();

@@ -38,6 +38,8 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     final user = Provider.of<User?>(context);
+    final carts = Provider.of<Carts>(context);
+    final prdt = Provider.of<ProductModel>(context);
     return Scaffold(
         backgroundColor: widget.products.prodColor,
         appBar: AppBar(
@@ -131,11 +133,12 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                       shape: StadiumBorder()),
                                 );
                               } else {
+                                carts.addItem(prdt.pid, productItems.prodName,productItems.prodImage, productItems.prodPrice,productItems.prodCount,productItems.prodColor);
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) => CartScreen(
-                                        products: productItems,
+                                        
                                       ),
                                     ));
                               }
