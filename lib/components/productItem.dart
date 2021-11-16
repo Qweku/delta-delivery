@@ -38,7 +38,7 @@ class ProductItem extends StatelessWidget {
             style: theme.textTheme.bodyText1!
                 .copyWith(fontWeight: FontWeight.bold)),
         const SizedBox(height: 5),
-        Text(price,
+        Text('GHS $price',
             style: theme.textTheme.headline3!
                 .copyWith(fontWeight: FontWeight.bold))
       ],

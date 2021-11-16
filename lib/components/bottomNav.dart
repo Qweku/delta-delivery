@@ -33,11 +33,10 @@ class BottomNav extends StatelessWidget {
         //     extras: {"label": "conference"}),
       ],
       onChange: onChange,
-      style:
-          FluidNavBarStyle(
-            iconBackgroundColor:theme.primaryColor,
-            iconUnselectedForegroundColor: theme.primaryColorLight,
-            barBackgroundColor:theme.primaryColor),
+      style: FluidNavBarStyle(
+          iconBackgroundColor: theme.primaryColor,
+          iconUnselectedForegroundColor: theme.primaryColorLight,
+          barBackgroundColor: theme.primaryColor),
       scaleFactor: 1.5,
       defaultIndex: 1,
       itemBuilder: (icon, item) => Semantics(

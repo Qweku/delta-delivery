@@ -40,6 +40,12 @@ dependencies:
   google_maps_flutter:
   location:
   flutter_polyline_points:
+  dio:
+  firebase_auth:
+  firebase_core:
+  cloud_firestore:
+  provider:
+  flutter_spinkit:
 
 dev_dependencies:
   flutter_test:

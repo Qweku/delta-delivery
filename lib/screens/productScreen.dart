@@ -32,8 +32,10 @@ class _ProductScreenState extends State<ProductScreen> {
 
     if (widget.tag == 0) {
       products = ProductModel().productModelList(ProductModel().canned);
-    } else {
+    } else if(widget.tag == 1) {
       products = ProductModel().productModelList(ProductModel().drinks);
+    }else {
+      products = ProductModel().productModelList(ProductModel().electronics);
     }
 
     return Stack(
@@ -49,44 +51,7 @@ class _ProductScreenState extends State<ProductScreen> {
         ),
         Column(
           children: [
-            // Expanded(
-            //     flex: 2,
-            //     child: Container(
-            //         width: width,
-            //         decoration: BoxDecoration(
-            //             borderRadius: BorderRadius.only(
-            //                 bottomRight: Radius.circular(40),bottomLeft:Radius.circular(40)),
-            //             color: Colors.brown,
-            //             image: DecorationImage(
-            //                 image: AssetImage('assets/can-bkg.png'),
-            //                 fit: BoxFit.cover,
-            //                 colorFilter: ColorFilter.mode(
-            //                     Colors.black.withOpacity(0.5),
-            //                     BlendMode.hardLight))),
-            //         child: Padding(
-            //           padding: EdgeInsets.only(
-            //               left: height * 0.03,
-            //               right: height * 0.03,
-            //               top: height * 0.08),
-            //           child: Column(
-            //             crossAxisAlignment: CrossAxisAlignment.start,
-            //             children: [
-            //               CustomTextField(
-            //                 hintText: 'Search',
-            //                 hintColor:Colors.white,
-            //                 style: theme.textTheme.bodyText2,
-            //                 suffixIcon: Icon(Icons.search,color:Colors.white),
-            //                 maxLines: 1,
-            //                 color: theme.primaryColorLight.withOpacity(0.3),
-            //               ),
-            //               SizedBox(height: height * 0.15),
-            //               Text('CANNED GOODS',
-            //                   style: theme.textTheme.headline2!
-            //                       .copyWith(fontWeight: FontWeight.bold)),
-            //             ],
-            //           ),
-            //         ))),
-
+           
             Expanded(
                 //flex: 3,
                 child: Container(

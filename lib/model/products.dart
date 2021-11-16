@@ -6,12 +6,16 @@ class ProductModel {
   String prodImage;
   String prodName;
   String prodPrice;
+  String unitPrice;
+  String prodCount;
   Color prodColor;
 
   ProductModel(
       {this.prodImage = '',
       this.prodName = '',
       this.prodPrice = '',
+      this.unitPrice ='',
+      this.prodCount='',
       this.prodColor = Colors.transparent});
 
   factory ProductModel.fromMap(Map<String, dynamic> map) {
@@ -30,156 +34,114 @@ class ProductModel {
     {
       "name": 'Nestle Milo',
       "image": 'assets/milo.png',
-      "price": 'GHS 17.00',
+      "price": '17.00',
       "color": Color(0xFF66BB6A),
     },
     {
-      "name": 'Nestle Milo',
-      "image": 'assets/milo.png',
-      "price": 'GHS 17.00',
-      "color": Color(0xFF66BB6A),
+      "name": 'Gino Tomato Paste',
+      "image": 'assets/gino.png',
+      "price": '3.00',
+      "color": Color(0xFFEF5350),
     },
     {
-      "name": 'Nestle Milo',
-      "image": 'assets/milo.png',
-      "price": 'GHS 17.00',
-      "color": Color(0xFF66BB6A),
+      "name": 'Peak Powdered Milk',
+      "image": 'assets/peak2.png',
+      "price": '25.00',
+      "color": Color(0xFF90CAF9),
     },
     {
-      "name": 'Nestle Milo',
-      "image": 'assets/milo.png',
-      "price": 'GHS 17.00',
-      "color": Color(0xFF66BB6A),
+      "name": 'Ideal Milk',
+      "image": 'assets/ideal-milk.png',
+      "price": '4.00',
+      "color": Color(0xFFFFF176),
     },
     {
-      "name": 'Nestle Milo',
-      "image": 'assets/milo.png',
-      "price": 'GHS 17.00',
-      "color": Color(0xFF66BB6A),
+      "name": 'Pomo Tomato Paste',
+      "image": 'assets/pomo.png',
+      "price": '3.00',
+      "color": Color(0xFFEF5350),
     },
     {
-      "name": 'Nestle Milo',
-      "image": 'assets/milo.png',
-      "price": 'GHS 17.00',
-      "color": Color(0xFF66BB6A),
+      "name": 'Titus Sardine',
+      "image": 'assets/sardine.png',
+      "price": '4.00',
+      "color": Color(0xFFFFCA28),
+    },
+    {
+      "name": 'Peak Milk',
+      "image": 'assets/peak_green.png',
+      "price": '3.50',
+      "color": Color(0xFF9CCC65),
     }
   ];
   List<Map<String, dynamic>> drinks = [
     {
       "name": 'Coca Cola',
       "image": 'assets/coca-cola.png',
-      "price": 'GHS 10.00',
-      "color": Color(0xFF303030),
+      "price": '10.00',
+      "color": Color(0xFF424242),
     },
     {
-      "name": 'Coca Cola',
-      "image": 'assets/coca-cola.png',
-      "price": 'GHS 10.00',
-      "color": Color(0xFF303030),
+      "name": 'Hollandia Yogurt',
+      "image": 'assets/hollandia.png',
+      "price": '20.00',
+      "color": Color(0xFFEC407A),
     },
     {
-      "name": 'Coca Cola',
-      "image": 'assets/coca-cola.png',
-      "price": 'GHS 10.00',
-      "color": Color(0xFF303030),
+      "name": 'Red Bull Energy Drink',
+      "image": 'assets/red-bull.png',
+      "price": '3.00',
+      "color": Color(0xFF1976D2),
     },
     {
-      "name": 'Coca Cola',
-      "image": 'assets/coca-cola.png',
-      "price": 'GHS 10.00',
-      "color": Color(0xFF303030),
+      "name": 'Malta Guinness',
+      "image": 'assets/malt.png',
+      "price": '4.00',
+      "color": Color(0xFFFFC107),
     },
     {
-      "name": 'Coca Cola',
-      "image": 'assets/coca-cola.png',
-      "price": 'GHS 10.00',
-      "color": Color(0xFF303030),
+      "name": 'Ceres Fruit Drink',
+      "image": 'assets/ceres.png',
+      "price": '12.00',
+      "color": Color(0xFFB2FF59),
+    },
+  ];
+  List<Map<String, dynamic>> electronics = [
+    {
+      "name": 'Blender',
+      "image": 'assets/blender.png',
+      "price": '100.00',
+      "color": Color(0xFF616161),
     },
     {
-      "name": 'Coca Cola',
-      "image": 'assets/coca-cola.png',
-      "price": 'GHS 10.00',
-      "color": Color(0xFF303030),
+      "name": 'Pressing Iron',
+      "image": 'assets/iron.png',
+      "price": '150.00',
+      "color": Color(0xFFFF80AB),
     },
     {
-      "name": 'Coca Cola',
-      "image": 'assets/coca-cola.png',
-      "price": 'GHS 10.00',
-      "color": Color(0xFF303030),
-    }
-  ];
-
-  List<String> productImages = [
-    'assets/milo.png',
-    'assets/gino.png',
-    'assets/peak2.png',
-    'assets/ideal-milk.png',
-    'assets/pomo.png',
-    'assets/sardine.png',
-    'assets/peak_green.png',
-  ];
-
-  List<String> productName = [
-    'Nestle Milo',
-    'Gino Tomato Paste',
-    'Peak Powdered Milk',
-    'Ideal Milk',
-    'Pomo Tomato Paste',
-    'Titus Sardine',
-    'Peak Milk'
-  ];
-
-  List<String> prices = [
-    'GHS 17.00',
-    'GHS 3.00',
-    'GHS 25.00',
-    'GHS 4.00',
-    'GHS 2.50',
-    'GHS 4.50',
-    'GHS 3.00'
-  ];
-
-  List productColor = [
-    Color(0xFF66BB6A),
-    Color(0xFFEF5350),
-    Color(0xFF90CAF9),
-    Color(0xFFFFF176),
-    Color(0xFFEF5350),
-    Color(0xFFFFCA28),
-    Color(0xFF9CCC65),
-  ];
-
-  //---------------------DRINKS DATA----------------------------------------------//
-
-  List<String> drinkImages = [
-    'assets/coca-cola.png',
-    'assets/hollandia.png',
-    'assets/red-bull.png',
-    'assets/malt.png',
-    'assets/ceres.png',
-  ];
-
-  List<String> drinkName = [
-    'Coca Cola',
-    'Hollandia Yogurt',
-    'Red Bull Energy Drink',
-    'Malta Guinness',
-    'Ceres Fruit Drink',
-  ];
-
-  List<String> drinkPrices = [
-    'GHS 10.00',
-    'GHS 20.00',
-    'GHS 5.00',
-    'GHS 4.00',
-    'GHS 12.0',
-  ];
-
-  List drinkColor = [
-    Color(0xFF303030),
-    Color(0xFFEC407A),
-    Color(0xFF1976D2),
-    Color(0xFFFFC107),
-    Color(0xFFB2FF59),
+      "name": 'Microwave Oven',
+      "image": 'assets/microwave.png',
+      "price": '300.00',
+      "color": Color(0xFF90A4AE),
+    },
+    {
+      "name": 'Cooking Stove',
+      "image": 'assets/stove.png',
+      "price": '500.00',
+      "color": Color(0xFF424242),
+    },
+    {
+      "name": 'LED Television',
+      "image": 'assets/television.png',
+      "price": '1280.00',
+      "color": Color(0xFFCE93D8),
+    },
+    {
+      "name": 'Washing Machine',
+      "image": 'assets/washing-machine.png',
+      "price": '1150.00',
+      "color": Color(0xFF616161),
+    },
   ];
 }

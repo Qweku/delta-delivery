@@ -2,8 +2,16 @@
 
 import 'package:delta/components/button.dart';
 import 'package:delta/components/counter.dart';
+import 'package:delta/model/cartModel.dart';
 import 'package:delta/model/products.dart';
+import 'package:delta/services/dataBase.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../main.dart';
+import 'cart.dart';
+import 'productSummary.dart';
 
 class ProductDetailScreen extends StatefulWidget {
   final ProductModel products;
@@ -16,12 +24,20 @@ class ProductDetailScreen extends StatefulWidget {
 }
 
 class _ProductDetailScreenState extends State<ProductDetailScreen> {
+  TextEditingController _counterValue = TextEditingController();
+
+  @override
+  void initState() {
+    _counterValue.text = '0';
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-
+    final user = Provider.of<User?>(context);
     return Scaffold(
         backgroundColor: widget.products.prodColor,
         appBar: AppBar(
@@ -32,7 +48,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
         body: Stack(
           children: [
             Padding(
-              padding: EdgeInsets.only(top:0),
+              padding: EdgeInsets.only(top: 0),
               child: Center(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -49,7 +65,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                         style: theme.textTheme.headline4!.copyWith(
                             fontWeight: FontWeight.bold, fontSize: 35)),
                     SizedBox(height: 10),
-                    Text(widget.products.prodPrice,
+                    Text('GHS ${widget.products.prodPrice}',
                         style: theme.textTheme.headline4)
                   ],
                 ),
@@ -68,8 +84,9 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                   child: Column(
                     children: [
                       CounterField(
-                          //color:widget.products.prodColor,
-                          ),
+                        width: width * 0.5,
+                        controller: _counterValue,
+                      ),
                       SizedBox(height: 20),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -77,14 +94,92 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                           Button(
                             borderColor: widget.products.prodColor,
                             buttonText: 'Add To Cart',
-                            onTap: () {},
+                            onTap: () async {
+                              double _cPrice =
+                                  double.parse(widget.products.prodPrice);
+                              int _counter = int.parse(_counterValue.text);
+
+                              double totalPrice = _cPrice * _counter;
+                              totalPrice.toString();
+                              await DbServices(uid: user!.uid).cartDataUpdate(
+                                totalPrice.toString(),
+                                widget.products.prodName,
+                                _counterValue.text,
+                                widget.products.prodImage,
+                              );
+                              // cartD!.itemName =
+                              //     widget.products.prodName;
+                              // cartD.itemImage =
+                              //     widget.products.prodImage;
+                              // cartD.itemPrice = totalPrice.toString();
+                              // cartD.itemCount = _counterValue.text;
+                              ProductModel productItems = ProductModel(
+                                  prodColor: widget.products.prodColor,
+                                  prodImage: widget.products.prodImage,
+                                  prodName: widget.products.prodName,
+                                  prodCount: _counterValue.text,
+                                  prodPrice: totalPrice.toString());
+                              if (_counterValue.text == '0') {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                      backgroundColor: theme.primaryColorDark,
+                                      content: Text('Invalid number of items',
+                                          textAlign: TextAlign.center,
+                                          style: theme.textTheme.bodyText2),
+                                      duration: Duration(milliseconds: 1500),
+                                      behavior: SnackBarBehavior.floating,
+                                      shape: StadiumBorder()),
+                                );
+                              } else {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => CartScreen(
+                                        products: productItems,
+                                      ),
+                                    ));
+                              }
+                            },
                             width: width * 0.3,
                             shadowColor: Colors.transparent,
                           ),
                           Button(
                             color: widget.products.prodColor,
                             buttonText: 'Buy Now',
-                            onTap: () {},
+                            onTap: () {
+                              double _cPrice =
+                                  double.parse(widget.products.prodPrice);
+                              int _counter = int.parse(_counterValue.text);
+
+                              double totalPrice = _cPrice * _counter;
+                              totalPrice.toString();
+                              ProductModel productItems = ProductModel(
+                                  prodColor: widget.products.prodColor,
+                                  prodImage: widget.products.prodImage,
+                                  prodName: widget.products.prodName,
+                                  prodCount: _counterValue.text,
+                                  unitPrice: widget.products.prodPrice,
+                                  prodPrice: totalPrice.toString());
+                              if (_counterValue.text == '0') {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                      backgroundColor: theme.primaryColorDark,
+                                      content: Text('Invalid number of items',
+                                          textAlign: TextAlign.center,
+                                          style: theme.textTheme.bodyText2),
+                                      duration: Duration(milliseconds: 1500),
+                                      behavior: SnackBarBehavior.floating,
+                                      shape: StadiumBorder()),
+                                );
+                              } else {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => ProductSummary(
+                                          products: productItems),
+                                    ));
+                              }
+                            },
                             width: width * 0.3,
                           )
                         ],

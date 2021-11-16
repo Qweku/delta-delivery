@@ -5,7 +5,19 @@ import 'package:flutter/material.dart';
 
 class CounterField extends StatefulWidget {
   final Color color;
-  const CounterField({Key? key, this.color = Colors.black54}) : super(key: key);
+  final double? width;
+  final Color textColor;
+  final double btnSize;
+  final TextEditingController controller;
+
+  const CounterField({
+    Key? key,
+    this.color = Colors.black54,
+    this.width,
+    this.textColor = Colors.white,
+    this.btnSize = 50,
+    required this.controller,
+  }) : super(key: key);
 
   @override
   _CounterFieldState createState() => _CounterFieldState();
@@ -13,25 +25,20 @@ class CounterField extends StatefulWidget {
 
 class _CounterFieldState extends State<CounterField> {
   int counter = 0;
-  TextEditingController _counterValue = TextEditingController();
-  @override
-  void initState() {
-    _counterValue.text = "0";
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
+    //double width = MediaQuery.of(context).size.width;
     final theme = Theme.of(context);
     return SizedBox(
-        width: width * 0.5,
+        width: widget.width,
         child: Row(
+          
           children: [
             GestureDetector(
                 child: Container(
-                  height: 50,
-                  width: 50,
+                  height: widget.btnSize,
+                  width: widget.btnSize,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
                       color: widget.color),
@@ -43,23 +50,24 @@ class _CounterFieldState extends State<CounterField> {
                     if (counter < 0) {
                       counter = 0;
                     }
-                    _counterValue.text = counter.toString();
+                    widget.controller.text = counter.toString();
                   });
                 }),
             Expanded(
               child: CustomTextField(
-                controller: _counterValue,
+                controller: widget.controller,
                 //borderColor: Colors.black,
                 textAlign: TextAlign.center,
                 maxLines: 1,
-                style: theme.textTheme.headline4,
+                style: theme.textTheme.headline4!
+                    .copyWith(color: widget.textColor),
                 keyboard: TextInputType.number,
               ),
             ),
             GestureDetector(
                 child: Container(
-                  height: 50,
-                  width: 50,
+                  height: widget.btnSize,
+                  width: widget.btnSize,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
                       color: widget.color),
@@ -69,7 +77,7 @@ class _CounterFieldState extends State<CounterField> {
                   setState(() {
                     counter++;
 
-                    _counterValue.text = counter.toString();
+                    widget.controller.text = counter.toString();
                   });
                 }),
           ],

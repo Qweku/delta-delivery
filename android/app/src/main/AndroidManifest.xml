@@ -3,6 +3,8 @@
    <application
         android:label="delta"
         android:icon="@mipmap/ic_launcher">
+        <meta-data android:name="com.google.android.geo.API_KEY"
+               android:value="AIzaSyA2RlyJzg8CFd6IdT6dSsMTXtaLwdrJ0Og"/>
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
